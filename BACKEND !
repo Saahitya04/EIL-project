@@ -1,0 +1,36 @@
+Hey Peeps !
+I've completed and pushed the backend and database setup to the repository. Here's a summary of what has been done:
+
+🚀   Backend Setup Done :
+✔ Spring Boot project with all necessary packages and controllers
+✔ PostgreSQL integrated and configured
+✔ All required entities, repositories, services, and controllers are implemented:
+      :Employee, Department, Leave, Salary, Attendance, User, WorkAssignment and related controllers/services
+
+
+🔐   JWT Security Setup :
+✔JWT-based authentication is implemented and working.
+✔We updated the JWT secret to meet HMAC-SHA256 security requirements:
+   :Used a secure 256-bit key in application.properties under jwt.secret
+   :This prevents the WeakKeyException error from occurring during token generation.
+✔Authentication endpoints (/api/auth/register and /api/auth/login) were tested successfully via Postman.
+✔Verified token generation and access to protected routes using Authorization headers.
+
+
+🛠  Other Configuration :
+✔application.properties includes
+    : DB config for PostgreSQL (jdbc:postgresql://localhost:5432/eilproject)
+    : JWT secret securely set
+    : Hibernate dialect and SQL formatting enabled
+✔Logging level for Spring Security is set to DEBUG for easier debugging during development.
+
+
+✅ Status
+✔Backend development 
+✔API endpoints tested 
+✔Connected to PostgreSQL 
+✔Project pushed to GitHub 
+
+
+By Yours Truely
+GAURI SHARMA 
