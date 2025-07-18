@@ -1,0 +1,16 @@
+# Maven build
+/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+
+# Environment or sensitive files
+.env
+application.properties
