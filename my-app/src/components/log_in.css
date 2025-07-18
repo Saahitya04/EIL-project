@@ -1,9 +1,14 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-clip: content-box;
     background-image: url('./src/assets/EILPHOTO.jpg');
     background-size: cover;
     background-position: center top;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px); 
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+
 

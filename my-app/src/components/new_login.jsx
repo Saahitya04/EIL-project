@@ -13,10 +13,10 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen">
-            <div className="bg-white/80 p-8 rounded-lg shadow-xl w-full h-[500px] max-w-sm text-center shadow-[8px_8px_20px_rgba(0,0,0,0.7)]">
+        <div className="bg-gray-100 flex items-center justify-center min-h-screen w-full backdrop-blur-sm">
+            <div className="bg-white/80 p-8 rounded-lg shadow-xl w-full h-50 max-w-sm text-center shadow-[8px_8px_20px_rgba(0,0,0,1)]">
                 <img
-                    src="/src/assets/EILPHOTO2.png"
+                    src="./src/assets/EILPHOTO2.png"
                     alt="Description of image"
                     className="w-24 h-24 mx-auto mb-6 rounded-full shadow-lg"
                 />
@@ -37,7 +37,7 @@ const LoginPage = () => {
                             required
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-white-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                     <div className="mb-6 text-left">
@@ -54,7 +54,7 @@ const LoginPage = () => {
                             required
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-white-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
                     <button
@@ -78,7 +78,6 @@ const LoginPage = () => {
                 </form>
             </div>
         </div>
-        // </div>
     );
 };
 
