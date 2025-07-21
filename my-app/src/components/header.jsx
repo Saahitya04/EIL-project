@@ -41,17 +41,22 @@ const Header = ({ currentPage, onNavigate, onLogout, loginStatus }) => {
     onLogout(); // Call the logout function passed from App.jsx
   };
 
+  const capitalizeName = (name) => {
+    return name.toUpperCase(); 
+  };
+  
   return (
-    <header className="bg-primary text-white p-4 shadow-md flex justify-between items-center">
+    <header>
+      <div className = "bg-primary text-white p-4 shadow-md flex justify-between items-center">
       <img src="./src/assets/eil_logo_60_transformation.png" alt="EIL"></img>
       <nav className="flex items-center space-x-4">
         <ul className="flex space-x-4 text-white">
           <li>
             <button
-              onClick={() => onNavigate('profile')}
+              onClick={() => onNavigate('dashboard')}
               className={`px-3 py-2 text-lg rounded-md transition-colors duration-200 bg-transparent hover:bg-gray-200 hover:text-gray-900 font-normal`}
             >
-              PROFILE
+              DASHBOARD
             </button>
           </li>
           <li>
@@ -104,6 +109,10 @@ const Header = ({ currentPage, onNavigate, onLogout, loginStatus }) => {
           )}
         </div>
       </nav>
+    </div>
+    <div className = "bg-secondary text-white h-[180px] flex items-center justify-center">
+          <span className='text-white text-[30px] font-semibold'>{capitalizeName(currentPage)}</span>
+    </div>
     </header>
   );
 };

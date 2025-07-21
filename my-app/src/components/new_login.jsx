@@ -44,8 +44,8 @@ const LoginPage = () => {
     };
 
     return (
-        <div style={{ backgroundImage: 'url(./src/assets/EILPHOTO.jpg)' }} className="bg-cover bg-center h-screen w-full no-repeat bg-[top_center] flex justify-center items-center">
-            <div className="bg-gray-100 flex items-center justify-center min-h-screen w-full backdrop-blur-sm">
+        <div id="login-body" style={{ backgroundImage: 'url(./src/assets/EILPHOTO.jpg)' }} className="bg-cover bg-center h-screen w-full no-repeat bg-[top_center] flex justify-center items-center">
+            <div className="flex items-center justify-center min-h-screen w-full backdrop-blur-sm">
                 <div className="bg-white/80 p-8 rounded-lg shadow-xl w-full h-50 max-w-sm text-center shadow-[8px_8px_20px_rgba(0,0,0,1)]">
                     <img
                         src="./src/assets/EILPHOTO2.png"
