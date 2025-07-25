@@ -6,9 +6,17 @@ import LoginPage from './components/new_login.jsx';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
 import Profile from './components/profile.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ForgotPassword from './components/forgot_pass.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Profile />
+    {/* <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Routes>
+    </BrowserRouter> */}
+    <Profile/>
   </StrictMode>,
 )

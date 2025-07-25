@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import ForgotPassword from './forgot_pass';
+import { Link } from "react-router-dom";
+
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    // const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -43,9 +47,14 @@ const LoginPage = () => {
         // }
     };
 
+    // const handleForgotPassword = () => {
+    //     e.preventDefault(); // Prevent default link behavior
+    //     navigate('/forgot-password'); // Navigate to Forgot Password page
+    // };
+
     return (
-        <div id="login-body" style={{ backgroundImage: 'url(./src/assets/EILPHOTO.jpg)' }} className="bg-cover bg-center h-screen w-full no-repeat bg-[top_center] flex justify-center items-center">
-            <div className="flex items-center justify-center min-h-screen w-full backdrop-blur-sm">
+        <div id="login-body" style={{ backgroundImage: 'url(./src/assets/EILPHOTO.jpg)' }} className="bg-cover bg-center h-screen min-w-full no-repeat bg-[top_center] flex justify-center items-center">
+            <div className="flex items-center justify-center min-h-screen min-w-full backdrop-blur-sm">
                 <div className="bg-white/80 p-8 rounded-lg shadow-xl w-full h-50 max-w-sm text-center shadow-[8px_8px_20px_rgba(0,0,0,1)]">
                     <img
                         src="./src/assets/EILPHOTO2.png"
@@ -100,12 +109,19 @@ const LoginPage = () => {
                         )}
 
                         <div className="mt-4 text-sm">
-                            <a
-                                href="forgot-password.html"
+                            {/* <a
+                                // onClick={() => handleForgotPassword()}
+                                href="#"
                                 className="text-blue-600 hover:text-blue-800 hover:underline"
                             >
                                 Forgot Password?
-                            </a>
+                            </a> */}
+                            <Link
+                                to="/forgot-password"
+                                className="text-blue-600 hover:text-blue-800 hover:underline"
+                            >
+                                Forgot Password?
+                            </Link>
                         </div>
                     </form>
                 </div>

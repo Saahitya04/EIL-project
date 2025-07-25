@@ -46,8 +46,8 @@ const Header = ({ currentPage, onNavigate, onLogout, loginStatus }) => {
   };
   
   return (
-    <header>
-      <div className = "bg-primary text-white p-4 shadow-md flex justify-between items-center">
+    <header className = "mb-4">
+      <div className = "bg-primary text-white p-4 shadow-md flex justify-between items-center sticky top-0">
       <img src="./src/assets/eil_logo_60_transformation.png" alt="EIL"></img>
       <nav className="flex items-center space-x-4">
         <ul className="flex space-x-4 text-white">

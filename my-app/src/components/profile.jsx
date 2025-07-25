@@ -29,13 +29,13 @@ const Profile = () => {
     }
     return (
         <div>
-            <div className='sticky top-0'>
+            <div>
                 <Header currentPage={currentPage} onNavigate={navigatePage} onLogout={handleLogout} loginStatus="EMP" />
             </div>
-            <div>
+            <div className = "mb-4">
                 {renderPage()}
             </div>
-            <div className='absolute bottom-0 w-full'>
+            <div className=''>
                 <Footer />
             </div>
 
