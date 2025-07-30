@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaRegCopy } from 'react-icons/fa';
 
 const details = {
@@ -41,6 +41,54 @@ const jobList = [
 
 
 function Dashboard() {
+    const [checkedIn, setCheckedIn] = useState(false);  // false = not checked in
+    const [loading, setLoading] = useState(false);
+
+    const handleCheckIn = async () => {
+        setLoading(true);
+        // try {
+        //     // POST to your backend to mark check-in time
+        //     const response = await fetch('http://localhost:8080/api/checkin', {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify({ userId }),
+        //     });
+        //     if (response.ok) {
+        //         setCheckedIn(true); // toggle button state
+        //     } else {
+        //         alert("Check-in failed");
+        //     }
+        // } catch (err) {
+        //     alert("Server error during check-in");
+        // }
+        setCheckedIn(true);
+        setLoading(false);
+    };
+
+    const handleCheckOut = async () => {
+        setLoading(true);
+        // try {
+        //     // POST to your backend to mark check-out time
+        //     const response = await fetch('http://localhost:8080/api/checkout', {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify({ userId }),
+        //     });
+        //     if (response.ok) {
+        //         setCheckedIn(false); // back to CheckIn
+        //     } else {
+        //         alert("Check-out failed");
+        //     }
+        // } catch (err) {
+        //     alert("Server error during check-out");
+        // }
+        setCheckedIn(false);
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        document.title = "EIL-Employee Dashboard";
+    }, []);
     const [copySuccess, setCopySuccess] = useState('');
     const [copied, setCopied] = useState(false);
 
@@ -68,24 +116,33 @@ function Dashboard() {
         <div>
             <div className="grid grid-cols-3 gap-10 m-5 max-width-[100vw]">
                 <div className="col-span-1 bg-gray-100 shadow-md rounded-lg h-[400px]" >
-                    <img src="./src/assets/profile_placeholder.png" alt="profile" className="relative relative top-7 border-4 border-gray-400 w-[250px] h-[250px] rounded-full m-auto" />
+                    <img src="./src/assets/profile_placeholder.png" alt="profile" className="relative relative top-4 border-4 border-gray-400 w-[250px] h-[250px] rounded-full m-auto" />
 
-                    <div className="text-center text-3xl font-bold relative top-10">
+                    <div className="text-center text-3xl font-bold relative top-5">
                         {details["First Name"]} {details["Middle Name"]} {details["Last Name"]}
                     </div>
                     <div className="flex items-center justify-center gap-2">
-                        <div className="text-center text-sm relative top-10 font-semibold" id="empId"
+                        <div className="text-center text-sm relative top-5 font-semibold" id="empId"
                         >
                             {details["Employee ID"]}
                         </div>
 
                         <button
                             onClick={() => handleCopy(details["Employee ID"])}
-                            className="relative top-10 flex items-center space-x-2 bg-gray-100 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded-md shadow-sm active:scale-95 transition"
+                            className="relative top-5 flex items-center space-x-2 bg-gray-100 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded-md shadow-sm active:scale-95 transition"
                         >
                             <FaRegCopy />
                         </button>
                     </div>
+                    <button
+                        onClick={checkedIn ? handleCheckOut : handleCheckIn}
+                        disabled={loading}
+                        className={`px-3 py-2 rounded-10 font-bold text-white transition relative top-5 flex items-center m-auto
+        ${checkedIn ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}
+        focus:outline-none`}
+                    >
+                        {loading ? "Processing..." : checkedIn ? "CheckOut" : "CheckIn"}
+                    </button>
                 </div>
                 <div className="col-span-2 bg-footer rounded-lg h-[400px] overflow-x-hidden overflow-y-auto">
                     <div className="text-center text-2xl font-bold m-5 underline text-footerfollowElem">EMPLOYEE DETAILS</div>
@@ -164,9 +221,9 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
-            <div className = "m-[30px]">
-                <h1 className = "text-2xl font-bold mb-4 underline text-footerfollowElem">ASSIGNMENTS LIST</h1> 
-                <h5 className = "text-gray-500 mb-4">(Shows 10 latest assignments only*)</h5>
+            <div className="m-[30px]">
+                <h1 className="text-2xl font-bold mb-4 underline text-footerfollowElem">ASSIGNMENTS LIST</h1>
+                <h5 className="text-gray-500 mb-4">(Shows 10 latest assignments only*)</h5>
                 <div className="grid grid-cols-5 font-semibold text-gray-700 border-b pb-2">
                     <div>Job ID</div>
                     <div>Job Description</div>

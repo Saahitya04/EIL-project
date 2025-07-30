@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CaptchaComponent from './CaptchaComponent';
-import { Link, useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
+import bgImage from '../assets/EILPHOTO.jpg';
+import logo from '../assets/EILPHOTO2.png';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -20,20 +22,24 @@ const LoginPage = () => {
         console.log('Proceeding with login', { username, password });
     };
 
-const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "EIL-Login";
+    }, []);
 
     return (
-        <div id="login-body" style={{ backgroundImage: 'url(./src/assets/EILPHOTO.jpg)' }} className="bg-cover bg-center h-screen w-full no-repeat bg-[top_center] flex justify-center items-center">
+        <div id="login-body" style={{ backgroundImage: `url(${bgImage})` }} className="bg-cover bg-center h-screen w-full no-repeat bg-[top_center] flex justify-center items-center">
             <div className="flex items-center justify-center min-h-screen w-full backdrop-blur-sm">
                 <div className="bg-white/80 p-8 rounded-lg shadow-xl w-full h-50 max-w-sm text-center shadow-[8px_8px_20px_rgba(0,0,0,1)]">
                     <img
-                        src="./src/assets/EILPHOTO2.png"
+                        src={logo}
                         alt="Description of image"
                         className="w-24 h-24 mx-auto mb-6 rounded-full shadow-lg"
                     />
                     <h2 className="text-3xl font-bold mb-6 text-gray-800">Login</h2>
 
                     <form onSubmit={handleSubmit}>
+                        
                         <div className="mb-4 text-left">
                             <label htmlFor="username" className="block text-gray-700 text-sm font-semibold mb-2">
                                 Username
