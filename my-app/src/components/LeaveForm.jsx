@@ -180,7 +180,7 @@ const LeaveForm = ({ onSubmitSuccess }) => {
               <SelectTrigger className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-eil-blue focus:border-eil-blue">
                 <SelectValue placeholder="Select Leave Type" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 {leaveTypeOptions.map(option => (
                   <SelectItem key={option.value} value={option.value}>
                     {option.label}

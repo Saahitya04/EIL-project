@@ -39,7 +39,8 @@ const CaptchaComponent = ({ onVerify }) => {
           placeholder="Answer"
           value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
-          className="shadow border rounded w-full py-1 px-2 text-gray-700 focus:ring focus:ring-blue-400 focus:outline-none"
+          className="shadow border rounded w-full py-1 px-2 text-gray-700 focus:ring focus:ring-blue-400 focus:outline-none bg-white text-black"
+          required
         />
         <button
           type="button"

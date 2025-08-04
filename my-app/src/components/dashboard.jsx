@@ -1,21 +1,35 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaRegCopy } from 'react-icons/fa';
 
-const details = {
-    "Employee ID": "1234567890",
-    "First Name": "John",
-    "Middle Name": "",
-    "Last Name": "Doe",
-    "Date Of Birth": "1990-01-01",
-    "E-Mail": "john.doe@example.com",
-    "Phone No.": "123-456-7890",
-    "Street": "123 Main St",
-    "City": "Anytown",
-    "ZIP Code": "12345",
-    "State": "Anytown",
-}
+function Dashboard() {
+    // Get user data from localStorage
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const [checkedIn, setCheckedIn] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [copied, setCopied] = useState(false);
 
-const jobList = [
+    useEffect(() => {
+        document.title = "EIL-Employee Dashboard";
+    }, []);
+
+    const details = {
+        "Employee ID": userData?.employeeId || "",
+        "First Name": (userData?.name || "").split(' ')[0],
+        "Middle Name": "",
+        "Last Name": (userData?.name || "").split(' ')[1] || "",
+        "Date Of Birth": userData?.dateOfBirth || "",
+        "E-Mail": userData?.email || "",
+        "Phone No.": userData?.phoneNo || "",
+        "Department": userData?.department || "",
+        "Designation": userData?.designation || "",
+        "Join Date": userData?.joinDate || "",
+        "Street": userData?.street || "",
+        "City": userData?.city || "",
+        "ZIP Code": userData?.zipCode || "",
+        "State": userData?.state || ""
+    };
+
+    const jobList = [
     {
         jobId: "1234",
         description: "Design new landing page",
@@ -39,10 +53,6 @@ const jobList = [
     }
 ];
 
-
-function Dashboard() {
-    const [checkedIn, setCheckedIn] = useState(false);  // false = not checked in
-    const [loading, setLoading] = useState(false);
 
     const handleCheckIn = async () => {
         setLoading(true);
@@ -86,12 +96,6 @@ function Dashboard() {
         setLoading(false);
     };
 
-    useEffect(() => {
-        document.title = "EIL-Employee Dashboard";
-    }, []);
-    const [copySuccess, setCopySuccess] = useState('');
-    const [copied, setCopied] = useState(false);
-
     const handleCopy = (e) => {
         navigator.clipboard.writeText(e).then(() => {
             setCopied(true);
@@ -113,7 +117,7 @@ function Dashboard() {
     };
 
     return (
-        <div>
+        <div className='text-black'>
             <div className="grid grid-cols-3 gap-10 m-5 max-width-[100vw]">
                 <div className="col-span-1 bg-gray-100 shadow-md rounded-lg h-[400px]" >
                     <img src="./src/assets/profile_placeholder.png" alt="profile" className="relative relative top-4 border-4 border-gray-400 w-[250px] h-[250px] rounded-full m-auto" />
@@ -165,9 +169,9 @@ function Dashboard() {
                             </div>
                         </div>
 
-                        {/* NAME SECTION */}
+                        {/* PERSONAL INFORMATION SECTION */}
                         <div>
-                            <h2 className="text-xl font-semibold mb-2">Name</h2>
+                            <h2 className="text-xl font-semibold mb-2">Personal Information</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {["First Name", "Middle Name", "Last Name", "Date Of Birth"].map((key) => (
                                     <div key={key} className="flex items-center justify-between bg-blue-50 p-3 rounded shadow">
@@ -183,9 +187,9 @@ function Dashboard() {
                             </div>
                         </div>
 
-                        {/* CONTACT SECTION */}
+                        {/* CONTACT INFORMATION SECTION */}
                         <div>
-                            <h2 className="text-xl font-semibold mb-2">Contact</h2>
+                            <h2 className="text-xl font-semibold mb-2">Contact Information</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {["E-Mail", "Phone No."].map((key) => (
                                     <div key={key} className="flex items-center justify-between bg-blue-50 p-3 rounded shadow">
@@ -201,13 +205,36 @@ function Dashboard() {
                             </div>
                         </div>
 
-                        {/* ADDRESS SECTION */}
+                        {/* WORK DETAILS SECTION */}
                         <div>
-                            <h2 className="text-xl font-semibold mb-2">Address</h2>
+                            <h2 className="text-xl font-semibold mb-2">Work Details</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {["Street", "City", "ZIP Code", "State"].map((key) => (
+                                {["Department", "Designation", "Join Date"].map((key) => (
                                     <div key={key} className="flex items-center justify-between bg-blue-50 p-3 rounded shadow">
                                         <span className="font-medium">{key}</span>
+                                        <div className="flex items-center gap-2">
+                                            <span>{details[key]}</span>
+                                            <button onClick={() => handleCopy(details[key])} className="text-gray-600 hover:text-black bg-transparent">
+                                                <FaRegCopy />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* ADDRESS SECTION */}
+                        <div>
+                            <h2 className="text-xl font-semibold mb-2">Address Details</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {[
+                                    { label: "Street", key: "Street" },
+                                    { label: "City", key: "City" },
+                                    { label: "ZIP Code", key: "ZIP Code" },
+                                    { label: "State", key: "State" }
+                                ].map(({ label, key }) => (
+                                    <div key={key} className="flex items-center justify-between bg-blue-50 p-3 rounded shadow">
+                                        <span className="font-medium">{label}</span>
                                         <div className="flex items-center gap-2">
                                             <span>{details[key]}</span>
                                             <button onClick={() => handleCopy(details[key])} className="text-gray-600 hover:text-black bg-transparent">

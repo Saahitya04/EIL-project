@@ -9,7 +9,7 @@ import Footer from "../components/Footer_lander.jsx";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white min-w-[100vw]">
+    <div className="min-h-screen bg-white min-w-[100vw] text-black">
       <Header/>
       <div id = "start" className="w-full mx-auto">
         <video
