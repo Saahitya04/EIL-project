@@ -1,6 +1,4 @@
 # EIL-project
-Sure! Here's the **README content** you can copy and paste into your GitHub repository:
-
 ---
 
 # 💼 HR Dashboard System (EIL Internship)
@@ -149,5 +147,3 @@ This project is part of an academic internship under **EIL** and is meant for ed
 This project is intended for internal learning and demonstration during the EIL internship. Commercial use is not permitted.
 
 ---
-
-Let me know if you'd like a shorter version or if you'd like me to add badges, instructions, or screenshots placeholders.
